@@ -1,4 +1,9 @@
 public class Car extends transport {
+    @Override
+    public void refill(String TypeOfFuel) {
+        System.out.println(getBrand() +" "+ getModel() + " заправляется " + TypeOfFuel);
+    }
+
     public static class Insurance {
         private final int validityPeriodInsurance;
         private final double costInsurance;
@@ -69,6 +74,7 @@ public class Car extends transport {
         }
 
     }
+
     private final int numberOfSeats;
     private final String bodyType;
     private String engineVolume;
@@ -153,8 +159,9 @@ public class Car extends transport {
                boolean summerTires,
                Key key,
                Insurance insurance,
-               double maxiMovementSpeed) {
-        super(brand,model,productionYear,productionCountry,color,maxiMovementSpeed);
+               double maxiMovementSpeed,
+               double fuelPercentage) {
+        super(brand, model, productionYear, productionCountry, color, maxiMovementSpeed, fuelPercentage);
         if (numberOfSeats >= 0) {
             this.numberOfSeats = numberOfSeats;
         } else {
@@ -230,7 +237,7 @@ public class Car extends transport {
                 ", productionCountry ='" + getProductionCountry() + '\'' +
                 ", numberOfSeats = " + numberOfSeats +
                 ", bodyType ='" + bodyType + '\'' +
-                ", color ='" + getColor()+ '\'' +
+                ", color ='" + getColor() + '\'' +
                 ", engineVolume ='" + engineVolume + '\'' +
                 ", transmission ='" + transmission + '\'' +
                 ", registrationNumber ='" + registrationNumber + '\'' +
@@ -241,6 +248,6 @@ public class Car extends transport {
                 " дней, = стоимость " + insurance.costInsurance +
                 " руб., = номер " + insurance.numberInsurance +
                 " maxiMovementSpeed = " + getMaxiMovementSpeed() +
-                " км/ч.";
+                " км/ч," + " fuelPercentage = " + String.format("%.2f", fuelPercentage) + " %.}";
     }
 }

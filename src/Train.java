@@ -8,8 +8,8 @@ public class Train extends transport {
 
     public Train(String brand, String model, String productionYear, String productionCountry, String color,
                  double maxiMovementSpeed, double priceOfTrip, String travelTime, String nameOfDepartureStation,
-                 String finalStop, int numberOfWagons) {
-        super(brand, model, productionYear, productionCountry, color, maxiMovementSpeed);
+                 String finalStop, int numberOfWagons, double fuelPercentage) {
+        super(brand, model, productionYear, productionCountry, color, maxiMovementSpeed, fuelPercentage);
         setPriceOfTrip(priceOfTrip);
         setTravelTime(travelTime);
         setNameOfDepartureStation(nameOfDepartureStation);
@@ -46,7 +46,7 @@ public class Train extends transport {
     }
 
     public void setNameOfDepartureStation(String nameOfDepartureStation) {
-        if (nameOfDepartureStation != null && !nameOfDepartureStation.isEmpty() && !nameOfDepartureStation.isBlank()) {
+        if (nameOfDepartureStation != null || !nameOfDepartureStation.isEmpty() || !nameOfDepartureStation.isBlank()) {
             this.nameOfDepartureStation = nameOfDepartureStation;
         } else {
             this.nameOfDepartureStation = "Станция Кинг-Кросс";
@@ -59,7 +59,7 @@ public class Train extends transport {
 
     public void setFinalStop(String finalStop) {
         if (finalStop != null && !finalStop.isEmpty() && !finalStop.isBlank()) {
-            this.finalStop = nameOfDepartureStation;
+            this.finalStop = finalStop;
         } else {
             this.finalStop = "Станция Хогсмид";
         }
@@ -82,15 +82,20 @@ public class Train extends transport {
         return "Train{" +
                 "brand ='" + getBrand() + '\'' +
                 ", model ='" + getModel() + '\'' +
-                ", productionYea r='" + getProductionYear() + '\'' +
+                ", productionYear='" + getProductionYear() + '\'' +
                 ", productionCountry ='" + getProductionCountry() + '\'' +
                 ", color ='" + getColor() + '\'' +
                 " maxiMovementSpeed = " + getMaxiMovementSpeed() + " км/ч\'" +
                 " priceOfTrip = " + priceOfTrip +
-                ", travelTime ='" + travelTime  + " ч\'" +
+                ", travelTime ='" + travelTime + " ч\'" +
                 ", nameOfDepartureStation ='" + nameOfDepartureStation + '\'' +
                 ", finalStop ='" + finalStop + '\'' +
                 ", numberOfWagons = " + numberOfWagons +
-                '}';
+                " fuelPercentage = " + String.format("%.2f", fuelPercentage) + " %.}";
+    }
+
+    @Override
+    public void refill(String TypeOfFuel) {
+        System.out.println(getBrand() + " " + getModel() + " заправляется " + TypeOfFuel);
     }
 }

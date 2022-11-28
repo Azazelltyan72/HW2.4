@@ -1,12 +1,19 @@
-public class transport {
+import java.text.DecimalFormat;
+
+public abstract class transport {
     private final String brand;
     private final String model;
     private final String productionYear;
     private final String productionCountry;
     private String color;
     private double maxiMovementSpeed;
+    protected double fuelPercentage;
 
-    public transport(String brand, String model, String productionYear, String productionCountry, String color, double maxiMovementSpeed) {
+    public abstract void refill(String TypeOfFuel);
+
+    public transport(String brand, String model, String productionYear,
+                     String productionCountry, String color,
+                     double maxiMovementSpeed, double fuelPercentage) {
         if (brand != null && !brand.isEmpty() && !brand.isBlank()) {
             this.brand = brand;
         } else {
@@ -29,6 +36,14 @@ public class transport {
         }
         setColor(color);
         setMaxiMovementSpeed(maxiMovementSpeed);
+        if (fuelPercentage > 0.00) {
+            if (fuelPercentage <= 100.00) {
+                this.fuelPercentage = fuelPercentage ;
+            }
+        }else{
+            this.fuelPercentage = 60;
+        }
+
     }
 
     public String getBrand() {
@@ -69,5 +84,8 @@ public class transport {
         } else {
             this.maxiMovementSpeed = maxiMovementSpeed;
         }
+    }
+    public double getFuelPercentage() {
+        return fuelPercentage;
     }
 }

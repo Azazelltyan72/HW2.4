@@ -1,7 +1,13 @@
-public class Bus extends transport{
+public class Bus extends transport {
 
-    public Bus(String brand, String model, String productionYear, String productionCountry, String color, double maxiMovementSpeed) {
-        super(brand, model, productionYear, productionCountry, color, maxiMovementSpeed);
+
+    @Override
+    public void refill(String TypeOfFuel) {
+        System.out.println(getBrand() +" "+ getModel() + " заправляется " + TypeOfFuel);
+    }
+
+    public Bus(String brand, String model, String productionYear, String productionCountry, String color, double maxiMovementSpeed, double fuelPercentage) {
+        super(brand, model, productionYear, productionCountry, color, maxiMovementSpeed, fuelPercentage);
     }
 
     @Override
@@ -12,6 +18,7 @@ public class Bus extends transport{
                 ", productionYea r='" + getProductionYear() + '\'' +
                 ", productionCountry ='" + getProductionCountry() + '\'' +
                 ", color ='" + getColor() + '\'' +
-                " maxiMovementSpeed = " + getMaxiMovementSpeed() + " км/ч.}";
+                " maxiMovementSpeed = " + getMaxiMovementSpeed() + " км/ч." +
+                " fuelPercentage = " + String.format("%.2f",fuelPercentage) + " %.}";
     }
 }
