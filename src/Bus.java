@@ -3,7 +3,7 @@ public class Bus extends transport {
 
     @Override
     public void refill(String TypeOfFuel) {
-        System.out.println(getBrand() +" "+ getModel() + " заправляется " + TypeOfFuel);
+
     }
 
     public Bus(String brand, String model, String productionYear, String productionCountry, String color, double maxiMovementSpeed, double fuelPercentage) {
